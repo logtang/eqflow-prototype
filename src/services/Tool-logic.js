@@ -20,19 +20,20 @@ let cleanupStatus;
 let currentSessionId = null; // Store the session ID received after successful upload
 let isProcessing = false; // Flag to prevent multiple submissions
 
+// --- Attach Event Listeners to DOM Elements ---
 function attachListeners() {
-  if (!uploadButton || !sendButton || !queryInput || !endChatButton) {
+  if (!uploadButton || !sendButton || !queryInput) {
     console.warn("One or more DOM elements are missing. Event listeners not attached.");
     return;
   }
 
-  uploadButton.addEventListener('click', handleUpload, { once: true });
+  uploadButton.addEventListener('click', handleUpload);
   sendButton.addEventListener('click', submitQuery);
   
   queryInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') submitQuery();
   });
-  endChatButton.addEventListener('click', endSession);
+//   endChatButton.addEventListener('click', endSession);
 }
 
 // --- Handle File Upload ---
@@ -160,32 +161,28 @@ async function endSession() {
 
 // --- Handle Add Messages to Chatbox ---
 function addMessage(content, type = 'status') {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message');
+  const messageDiv = document.createElement('div');
+  messageDiv.classList.add('message');
 
-    const contentDiv = document.createElement('div');
-    contentDiv.classList.add('content');
-    // Use textContent initially to prevent XSS, then replace newlines for bot messages
+  const contentDiv = document.createElement('div');
+  contentDiv.classList.add('content');
+
+  if (type === 'user') {
+    messageDiv.classList.add('user-message');
     contentDiv.textContent = content;
+  } else if (type === 'bot') {
+    messageDiv.classList.add('bot-message');
+    contentDiv.innerHTML = content.replace(/\n/g, '<br>');
+  } else {
+    messageDiv.classList.add('status-message');
+    contentDiv.textContent = content;
+  }
 
-    if (type === 'user') {
-        messageDiv.classList.add('user-message');
-    } else if (type === 'bot') {
-        messageDiv.classList.add('bot-message');
-        // Basic Markdown-like formatting for newlines (replace \n with <br>)
-        contentDiv.innerHTML = contentDiv.innerHTML.replace(/\n/g, '<br>');
-    } else { // status message
-        messageDiv.classList.add('status-message');
-        // Status messages usually don't need the inner content div styling
-         messageDiv.textContent = content; // Direct text content for status
-    }
+  messageDiv.appendChild(contentDiv);
+  chatbox.appendChild(messageDiv);
+  chatbox.scrollTop = chatbox.scrollHeight;
 
-    if (type !== 'status') {
-         messageDiv.appendChild(contentDiv);
-    }
-
-    chatbox.appendChild(messageDiv);
-    chatbox.scrollTop = chatbox.scrollHeight; // Scroll to bottom
+  console.log("👁️ Injected message div:", messageDiv.outerHTML);
 }
 
 // --- Handle Processing State ---
@@ -205,7 +202,8 @@ function setProcessingState(processing) {
 // --- Handle Reset UI after Ending Session ---
 function resetUI() {
     currentSessionId = null;
-    chatbox.innerHTML = '<div class="status-message">Please upload a document to begin analysis.</div>';
+    chatbox.innerHTML = '';  // wipe old content
+    addMessage("Please upload a document to begin analysis.", "status");
     uploadStatus.textContent = '';
     cleanupStatus.textContent = ''; // Clear cleanup status
     fileInput.value = ''; // Clear the file input selection

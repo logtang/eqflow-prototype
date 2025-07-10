@@ -12,8 +12,8 @@
 
 <style>
   main {
-    padding: 2rem;
-    font-family: system-ui, sans-serif;
+    padding: 1.75rem;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 </style>
 
