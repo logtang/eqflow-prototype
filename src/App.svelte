@@ -1,21 +1,21 @@
 <script>
-  // SPA Router for Svelte
+  // SPA Router for Svelte, Navbar
   import Router from 'svelte-spa-router';
 
-  // local components
+  // Navbar, Routing
   import NavBar from './lib/NavBar.svelte';
-
-  // route components (screens)
-  import HowItWorks from '../routes/HowItWorks.svelte';
-  import PolicyGallery from '../routes/PolicyGallery.svelte';
-  import Tool from '../routes/Tool.svelte';
-
-  const routes = {
-    '/': HowItWorks,
-    '/gallery': PolicyGallery,
-    '/tool': Tool
-  };
+  import HowItWorks from './routes/HowItWorks.svelte';
+  import PolicyGallery from './routes/PolicyGallery.svelte';
+  import Tool from './routes/Tool.svelte';
+  const routes = { '/': HowItWorks, '/gallery': PolicyGallery, '/tool': Tool };
 </script>
+
+<style>
+  main {
+    padding: 2rem;
+    font-family: system-ui, sans-serif;
+  }
+</style>
 
 <!-- Static navbar on every page -->
 <NavBar />
@@ -25,9 +25,3 @@
   <Router {routes} />
 </main>
 
-<style>
-  main {
-    padding: 2rem;
-    font-family: system-ui, sans-serif;
-  }
-</style>
