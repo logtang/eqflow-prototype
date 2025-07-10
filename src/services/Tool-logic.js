@@ -26,16 +26,16 @@ function attachListeners() {
     return;
   }
 
-  console.log("Adding event listeners...");
-
   uploadButton.addEventListener('click', handleUpload, { once: true });
   sendButton.addEventListener('click', submitQuery);
+  
   queryInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') submitQuery();
   });
   endChatButton.addEventListener('click', endSession);
 }
 
+// --- Handle File Upload ---
 async function handleUpload() {
     const file = fileInput.files[0];
     if (!file) {
@@ -106,6 +106,7 @@ async function handleUpload() {
     }
 }
 
+// --- Handle End Chat Button ---
 async function endSession() {
     if (!currentSessionId || isProcessing) {
         return;
@@ -157,7 +158,7 @@ async function endSession() {
     // Note: We don't call setProcessingState(false) on SUCCESS because resetUI() does it.
 }
 
-// Function to add messages to the chatbox
+// --- Handle Add Messages to Chatbox ---
 function addMessage(content, type = 'status') {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message');
@@ -187,7 +188,7 @@ function addMessage(content, type = 'status') {
     chatbox.scrollTop = chatbox.scrollHeight; // Scroll to bottom
 }
 
-// Function to update UI state (disable/enable inputs)
+// --- Handle Processing State ---
 function setProcessingState(processing) {
     isProcessing = processing;
     queryInput.disabled = processing || !currentSessionId;
@@ -201,7 +202,7 @@ function setProcessingState(processing) {
     }
 }
 
-// Function to reset UI to initial state after ending session
+// --- Handle Reset UI after Ending Session ---
 function resetUI() {
     currentSessionId = null;
     chatbox.innerHTML = '<div class="status-message">Please upload a document to begin analysis.</div>';
@@ -211,7 +212,7 @@ function resetUI() {
     setProcessingState(false); // Re-enable upload, disable others
 }
 
-// Handle query submission
+// --- Handle Query Submission ---
 async function submitQuery() {
     const query = queryInput.value.trim();
     if (!query || !currentSessionId || isProcessing) {
