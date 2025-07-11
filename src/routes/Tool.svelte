@@ -58,7 +58,7 @@
 
       <button class="icon-button" on:click={() => document.getElementById('document-upload').click()}>📎</button>
 
-      <button class="icon-button" bind:this={sendButton}><img src="../../public/send-button.png" id="send-button1" alt="Send Button"></button>
+      <button class="icon-button" bind:this={sendButton}>🔼</button>
     </div>
 
     <!-- (3) Spinner Animation -->
