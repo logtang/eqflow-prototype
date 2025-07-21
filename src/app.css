@@ -1,14 +1,5 @@
 /* --- Global Stylings --- */
 
-
-
 /* Reset margins/padding */
 body, html { margin: 0; padding: 0; }
 * { box-sizing: border-box; }
-
-/* --- Messages --- */
-.message { margin-bottom: 15px; }
-.user-message { text-align: right; color: #333; }
-.user-message .content { background-color: #d1e7dd; padding: 8px 12px; border-radius: 10px; display: inline-block; max-width: 70%; text-align: left; }
-.bot-message .content { background-color: #cfe2ff; padding: 8px 12px; border-radius: 10px; display: inline-block; max-width: 70%; white-space: pre-wrap; /* Preserve whitespace */ }
-.status-message { font-style: italic; color: #666; text-align: center; margin: 10px 0; font-size: 0.9em;}

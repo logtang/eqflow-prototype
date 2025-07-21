@@ -3,7 +3,7 @@
   import Router from 'svelte-spa-router';
 
   // Navbar, Routing
-  import NavBar from './lib/NavBar.svelte';
+  import LogoBar from './lib/LogoBar.svelte';
   import HowItWorks from './routes/HowItWorks.svelte';
   import PolicyGallery from './routes/PolicyGallery.svelte';
   import Tool from './routes/Tool.svelte';
@@ -18,7 +18,9 @@
 </style>
 
 <!-- Static navbar on every page -->
-<NavBar />
+<!-- Temporarily Removing NavBar
+<NavBar /> -->
+<LogoBar />
 
 <!-- This <Router> replaces the content dynamically based on URL -->
 <main>
