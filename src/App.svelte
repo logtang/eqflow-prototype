@@ -4,10 +4,11 @@
 
   // Navbar, Routing
   import LogoBar from './lib/LogoBar.svelte';
-  import HowItWorks from './routes/HowItWorks.svelte';
   import PolicyGallery from './routes/PolicyGallery.svelte';
+  import AnalysisView from './routes/AnalysisView.svelte';
   import Tool from './routes/Tool.svelte';
-  const routes = { '/': HowItWorks, '/gallery': PolicyGallery, '/tool': Tool };
+  import InfoView from './routes/InfoView.svelte';
+  const routes = { '/': PolicyGallery, '/aview': AnalysisView, '/tool': Tool, '/info': InfoView };
 </script>
 
 <style>
@@ -17,9 +18,7 @@
   }
 </style>
 
-<!-- Static navbar on every page -->
-<!-- Temporarily Removing NavBar
-<NavBar /> -->
+<!-- Main Application Component -->
 <LogoBar />
 
 <!-- This <Router> replaces the content dynamically based on URL -->

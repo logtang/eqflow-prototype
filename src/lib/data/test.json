@@ -1,0 +1,47 @@
+[
+  {
+    "fileName": "Clean Water Act, 1972",
+    "description": "The Clean Water Act of 1972 establishes a framework for water pollution control but lacks comprehensive equity considerations.",
+    "equityTag": ["Recognitional", "Procedural", "Distributional", "Structural"],
+    "summary": "The Clean Water Act focuses on pollution control and water quality. While it enables federal oversight and provides mechanisms for public participation, it does not explicitly address equity. Implementation tends to favor well-resourced communities, leaving marginalized groups underrepresented and underserved.",
+    "vulnerableGroups": ["Low-income households", "Rural communities", "Minority populations"],
+    "severityOfImpact": ["High for water access", "Moderate for public health", "Moderate for community voice"],
+    "mitigationStrategies": ["Targeted subsidies", "Community engagement programs", "Capacity-building for public participation", "Policy revisions to include EJ provisions"]
+  },
+  {
+    "fileName": "Urban Heat Mitigation Strategy",
+    "description": "Outlines strategies for heat resilience in underserved neighborhoods.",
+    "equityTag": ["Procedural"],
+    "summary": "This policy proposes interventions to reduce urban heat in vulnerable neighborhoods, focusing on increasing green spaces and improving infrastructure to protect at-risk populations.",
+    "vulnerableGroups": ["Elderly residents", "Outdoor workers", "Children"],
+    "severityOfImpact": ["High for health outcomes", "Moderate for utility costs", "Low for property values"],
+    "mitigationStrategies": ["Tree planting", "Cooling centers", "Public awareness campaigns"]
+  },
+  {
+    "fileName": "Inclusive Public Transport Policy",
+    "description": "Policy for equitable access to public transit.",
+    "equityTag": ["Distributional"],
+    "summary": "Aims to ensure all community members have affordable and reliable access to public transportation, reducing barriers for marginalized groups.",
+    "vulnerableGroups": ["People with disabilities", "Low-income commuters", "Elderly"],
+    "severityOfImpact": ["High for mobility", "Moderate for employment access", "Low for environmental impact"],
+    "mitigationStrategies": ["Fare subsidies", "Accessible vehicles", "Expanded service hours"]
+  },
+  {
+    "fileName": "Clean Air Initiative",
+    "description": "A policy to improve air quality in urban centers through stricter emissions standards and community monitoring.",
+    "equityTag": ["Structural", "Transformational"],
+    "summary": "This initiative enforces stricter air pollution controls and funds community-led air quality monitoring, prioritizing neighborhoods with historically poor air quality.",
+    "vulnerableGroups": ["Asthmatic individuals", "Children", "Low-income urban residents"],
+    "severityOfImpact": ["High for respiratory health", "Moderate for healthcare costs", "Low for local businesses"],
+    "mitigationStrategies": ["Emission reduction incentives", "Community monitoring programs", "Healthcare support"]
+  },
+  {
+    "fileName": "Water Conservation Outreach Program",
+    "description": "Community-based program to promote water conservation practices in drought-prone regions.",
+    "equityTag": ["Recognitional", "Distributional"],
+    "summary": "This program educates and empowers residents in drought-affected areas to adopt water-saving techniques, with special focus on communities facing water insecurity.",
+    "vulnerableGroups": ["Drought-affected families", "Small farmers", "Indigenous communities"],
+    "severityOfImpact": ["High for water availability", "Moderate for agricultural productivity", "Low for urban users"],
+    "mitigationStrategies": ["Educational workshops", "Resource grants", "Local partnerships"]
+  }
+]
