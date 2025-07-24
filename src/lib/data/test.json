@@ -1,47 +1,52 @@
 [
   {
     "fileName": "Clean Water Act, 1972",
+    "title": "Clean Water Act of 1972, As Amended through the 108th Congress",
     "description": "The Clean Water Act of 1972 establishes a framework for water pollution control but lacks comprehensive equity considerations.",
     "equityTag": ["Recognitional", "Procedural", "Distributional", "Structural"],
-    "summary": "The Clean Water Act focuses on pollution control and water quality. While it enables federal oversight and provides mechanisms for public participation, it does not explicitly address equity. Implementation tends to favor well-resourced communities, leaving marginalized groups underrepresented and underserved.",
-    "vulnerableGroups": ["Low-income households", "Rural communities", "Minority populations"],
-    "severityOfImpact": ["High for water access", "Moderate for public health", "Moderate for community voice"],
-    "mitigationStrategies": ["Targeted subsidies", "Community engagement programs", "Capacity-building for public participation", "Policy revisions to include EJ provisions"]
+    "summary": "The Clean Water Act of 1972 establishes a framework for water pollution control but lacks comprehensive equity considerations.",
+    "vulnerableGroups": ["Distressed communities", "Alaska Native villages", "Indian tribes"],
+    "severityOfImpact": ["Significant reduction in pollution improves public health and ecosystems", "Economic viability of smaller municipalities and industries may be threatened", "Economic disparities affect compliance burdens, leading to inequitable impacts"],
+    "mitigationStrategies": ["Grants for research", "Development of contingency plans", "Individual control strategies for pollutants"]
   },
   {
-    "fileName": "Urban Heat Mitigation Strategy",
-    "description": "Outlines strategies for heat resilience in underserved neighborhoods.",
-    "equityTag": ["Procedural"],
-    "summary": "This policy proposes interventions to reduce urban heat in vulnerable neighborhoods, focusing on increasing green spaces and improving infrastructure to protect at-risk populations.",
-    "vulnerableGroups": ["Elderly residents", "Outdoor workers", "Children"],
-    "severityOfImpact": ["High for health outcomes", "Moderate for utility costs", "Low for property values"],
-    "mitigationStrategies": ["Tree planting", "Cooling centers", "Public awareness campaigns"]
+    "fileName": "Endangered Species Act of 1973, As Amended through the 108th Congress",
+    "title": "endangered-species-act.pdf",
+    "description": "The Endangered Species Act recognizes ecological equity but lacks explicit social equity considerations.",
+    "equityTag": ["Recognitional", "Procedural", "Distributional", "Structural"],
+    "summary": "The Endangered Species Act recognizes ecological equity but lacks explicit social equity considerations.",
+    "vulnerableGroups": ["Alaska Natives", "Communities experiencing economic hardship"],
+    "severityOfImpact": ["Economic impacts on land-reliant communities", "Positive biodiversity outcomes offsetting some burdens", "Disproportionate burdens on disadvantaged groups"],
+    "mitigationStrategies": ["Live propagation", "Transplantation", "Habitat acquisition"]
   },
   {
-    "fileName": "Inclusive Public Transport Policy",
-    "description": "Policy for equitable access to public transit.",
-    "equityTag": ["Distributional"],
-    "summary": "Aims to ensure all community members have affordable and reliable access to public transportation, reducing barriers for marginalized groups.",
-    "vulnerableGroups": ["People with disabilities", "Low-income commuters", "Elderly"],
-    "severityOfImpact": ["High for mobility", "Moderate for employment access", "Low for environmental impact"],
-    "mitigationStrategies": ["Fare subsidies", "Accessible vehicles", "Expanded service hours"]
+    "fileName": "Draft Strategic Plan for the Proposed Agreements to Support Healthy Rivers and Landscapes",
+    "title": "health-rivers-and-lakes-draft-program.pdf",
+    "description": "The program addresses habitat restoration and tribal involvement but lacks comprehensive human equity mechanisms.",
+    "equityTag": ["Recognitional", "Procedural", "Distributional", "Structural"],
+    "summary": "The assessment evaluates the program's approach to equity across recognitional, procedural, distributional, and structural dimensions, highlighting strengths and areas for improvement.",
+    "vulnerableGroups": ["Native fish populations", "California Native American tribes"],
+    "severityOfImpact": ["Long-term ecological gains from habitat restoration", "Disruption of water rights", "Minimal analysis of human impacts"],
+    "mitigationStrategies": ["Adjusting water release schedules", "Habitat restoration projects"]
   },
   {
-    "fileName": "Clean Air Initiative",
-    "description": "A policy to improve air quality in urban centers through stricter emissions standards and community monitoring.",
-    "equityTag": ["Structural", "Transformational"],
-    "summary": "This initiative enforces stricter air pollution controls and funds community-led air quality monitoring, prioritizing neighborhoods with historically poor air quality.",
-    "vulnerableGroups": ["Asthmatic individuals", "Children", "Low-income urban residents"],
-    "severityOfImpact": ["High for respiratory health", "Moderate for healthcare costs", "Low for local businesses"],
-    "mitigationStrategies": ["Emission reduction incentives", "Community monitoring programs", "Healthcare support"]
+    "fileName": "Human Right to Water",
+    "title": "human-right-to-water.pdf",
+    "description": "The policy recognizes the human right to water but lacks specific implementation and inclusion strategies.",
+    "equityTag": ["Recognitional", "Procedural", "Distributional", "Structural"],
+    "summary": "The document outlines California's commitment to ensuring the right to safe, clean, affordable, and accessible water, highlighting concerns and areas for improvement across various equity dimensions.",
+    "vulnerableGroups": ["Marginalized communities not specifically identified"],
+    "severityOfImpact": ["Significant policy impact recognizing water as a right", "Absence of mandated resources limits implementation", "Potential for continued disparities in access"],
+    "mitigationStrategies": ["General policy framework exists", "No specific strategies detailed"]
   },
   {
-    "fileName": "Water Conservation Outreach Program",
-    "description": "Community-based program to promote water conservation practices in drought-prone regions.",
-    "equityTag": ["Recognitional", "Distributional"],
-    "summary": "This program educates and empowers residents in drought-affected areas to adopt water-saving techniques, with special focus on communities facing water insecurity.",
-    "vulnerableGroups": ["Drought-affected families", "Small farmers", "Indigenous communities"],
-    "severityOfImpact": ["High for water availability", "Moderate for agricultural productivity", "Low for urban users"],
-    "mitigationStrategies": ["Educational workshops", "Resource grants", "Local partnerships"]
+    "fileName": "Sustainable Groundwater Management Act, 2014",
+    "title": "sustainable-groundwater-managment-act.pdf",
+    "description": "SGMA includes stakeholder provisions but lacks explicit strategies for systemic equity concerns.",
+    "equityTag": ["Recognitional", "Procedural", "Distributional", "Structural"],
+    "summary": "The SGMA integrates some equity considerations within its framework, addressing the interests of diverse stakeholders while presenting areas for improvement.",
+    "vulnerableGroups": ["Disadvantaged communities", "California Native American tribes", "Small community water systems"],
+    "severityOfImpact": ["Groundwater depletion and quality degradation challenges", "Regulatory burdens on local agencies", "Disproportionate impact on historically underserved areas"],
+    "mitigationStrategies": ["Groundwater monitoring", "Overdraft mitigation", "Recharge area protection"]
   }
 ]

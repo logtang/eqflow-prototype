@@ -49,26 +49,45 @@
 
     /* Tab Elements */
     .tab-bar {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 0.5rem;
-        margin-bottom: 2rem;
-        justify-content: center;
-        background: #EDEDED;
-        border-radius: 10px;
-        padding: 1rem 2rem; /* Increased left/right padding */
-        max-width: 600px;
-        box-sizing: border-box;
-        margin-left: auto;
-        margin-right: auto;
-        overflow-x: auto;
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      justify-content: center;
+      background: #EDEDED;
+      border-radius: 14px;
+      padding: 1.5rem 3rem;
+      max-width: 1200px;
+      box-sizing: border-box;
+      margin-left: auto;
+      margin-right: auto;
+      overflow-x: auto;
+      white-space: nowrap;
     }
-    .tab { padding: 0.5rem 1rem; border: 2px solid #ccc; border-radius: 8px; background: #5bcce8; cursor: pointer; }
-    .tab.active { background: #0C395A; color: white; border-color: #0C395A; }
+    .tab {
+      padding: 1.2rem 4.5rem;
+      font-size: 1.35rem;
+      border: 2.5px solid #ccc;
+      border-radius: 12px;
+      background: #5bcce8;
+      cursor: pointer;
+      min-width: 260px;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .tab.active {
+      background: #0C395A;
+      color: white;
+      border-color: #0C395A;
+    }
 
     /* Equity Tab, Cards */
 
-    .section-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; overflow: hidden;}
     .section { background-color: #eee; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; }
     .pill { padding: 0.4rem 0.8rem; font-weight: bold; font-size: 0.95rem; border-radius: 6px; color: #fff; margin-bottom: 0.5rem; display: inline-block; }
     .title { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
@@ -148,47 +167,87 @@
 
     <!-- Vulnerable Groups Formatting -->
     {#if activeTab === 'vulnerable_groups'}
-      <h1>This is the Vulnerable Groups Tab!</h1>
-    {/if}
+      <p class="summary">{general.vulnerable_groups_analysis.summary}</p>
 
-    <!-- Impact Severity Formatting -->
-    {#if activeTab === 'impact_severity'}
-    <p class="summary">{general.severity_impact_analysis.summary}</p>
-
-    <div class="section">
+      <div class="section">
         <div class="title">
-        <span class="pill" style="background-color: #ff7a7a">Impact Severity</span>
+          <span class="pill" style="background-color: #0C395A">Vulnerable Groups Analysis</span>
         </div>
 
         <div class="columns">
-        <div class="box">
-            <strong>
-            <img src="public/green-dot.png" alt="High Severity Impacts" style="height: 1em; vertical-align: middle; margin-right: 0.5em;" />
-            High Severity Impacts
-            </strong>
-            <p>{general.severity_impact_analysis.high_severity_impacts}</p>
-        </div>
-
-        <div class="box">
-            <strong>
-            <img src="public/red-dot.png" alt="Equity Implications of Impacts" style="height: 1em; vertical-align: middle; margin-right: 0.5em;" />
-            Equity Implications of Impacts
-            </strong>
-            <p>{general.severity_impact_analysis.equity_implications_of_impacts}</p>
-        </div>
+          <div class="box">
+            <strong>Identified Groups</strong>
+            <p>{general.vulnerable_groups_analysis.identified_groups_and_impacts}</p>
+          </div>
         </div>
 
         <div class="conclusion">
-        <strong>Conclusion:</strong> {general.severity_impact_analysis.conclusion}
+          <strong>Equity Assessment Summary:</strong> {general.vulnerable_groups_analysis.equity_assessment_summary}
         </div>
-    </div>
+
+        <div class="conclusion" style="margin-top: 1rem;">
+          <strong>Conclusion:</strong> {general.vulnerable_groups_analysis.conclusion}
+        </div>
+      </div>
+    {/if}
+    <!-- Impact Severity Formatting -->
+    {#if activeTab === 'impact_severity'}
+      <p class="summary">{general.severity_impact_analysis.summary}</p>
+
+      <div class="section">
+        <div class="title">
+          <span class="pill" style="background-color: #0C395A">Severity of Impact Analysis</span>
+        </div>
+
+        <div class="columns">
+          <div class="box">
+            <strong>High Severity Impacts</strong>
+            <p>{general.severity_impact_analysis.high_severity_impacts}</p>
+          </div>
+          <div class="box">
+            <strong>Moderate Severity Impacts</strong>
+            <p>{general.severity_impact_analysis.moderate_severity_impacts}</p>
+          </div>
+        </div>
+
+        <div class="columns" style="margin-top: 1rem;">
+          <div class="box" style="flex: 1 1 100%;">
+            <strong>Equity Implications of Impacts</strong>
+            <p>{general.severity_impact_analysis.equity_implications_of_impacts}</p>
+          </div>
+        </div>
+
+        <div class="conclusion" style="margin-top: 1rem;">
+          <strong>Conclusion:</strong> {general.severity_impact_analysis.conclusion}
+        </div>
+      </div>
     {/if}
 
     <!-- Mitigation Strategies Formatting -->
     {#if activeTab === 'mitigation_strategies'}
-      <h1>This is the Mitigation Strategies Tab!</h1>
+      <p class="summary">{general.mitigation_strategies_analysis.summary}</p>
+
+      <div class="section">
+        <div class="title">
+          <span class="pill" style="background-color: #0C395A">Mitigation Strategies Analysis</span>
+        </div>
+
+        <div class="columns">
+          <div class="box">
+            <strong>Identified Strategies</strong>
+            <p>{general.mitigation_strategies_analysis.identified_strategies}</p>
+          </div>
+        </div>
+
+        <div class="conclusion">
+          <strong>Equity Assessment Summary:</strong> {general.mitigation_strategies_analysis.equity_assessment}
+        </div>
+
+        <div class="conclusion" style="margin-top: 1rem;">
+          <strong>Conclusion:</strong> {general.mitigation_strategies_analysis.conclusion}
+        </div>
+      </div>
     {/if}
-    
 
   </div>
 
