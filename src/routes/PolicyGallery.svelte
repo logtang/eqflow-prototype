@@ -4,15 +4,24 @@
   import InfoTab from "../lib/InfoTab.svelte";
 
   // Policies data
+  import { currentPolicy } from '../lib/stores/currentPolicy.js';
   import policiesTest from "../lib/data/test.json";
 
   // State variables for modals
   let showInfo = false;
-  let showAnalysis = false;
-  let showUpload = false;
 
-  // State Variable, Selection for Analysis Modal
-  export let currentPolicy = null;
+  // State Variable from Store, Selection for Analysis Modal
+  function handleSelect(policy) {
+    const normalized = {
+      document: {
+        filename: policy.filename || "Clean Water Act, 1972", // <- fallback but use correct key
+        title: policy.fileName
+      }
+    };
+    console.log("Setting currentPolicy with:", normalized);
+    currentPolicy.set(normalized);
+    window.location.hash = '#/aview';
+  }
 
 </script>
 
@@ -73,15 +82,15 @@
       <div class="card">
         <h3>{policy.fileName}</h3>
         <p>{policy.description}</p>
-        <button
+        <!-- <button
           class="analysis-btn"
           on:click={() => {
             currentPolicy = policy.fileName;
             window.location.hash = '#/aview';
           }}
-        >
-          View Analysis
-        </button>
+        > -->
+        <button class="analysis-btn"
+          on:click={() => handleSelect(policy)}>View Analysis</button>
       </div>
     {/each}
 

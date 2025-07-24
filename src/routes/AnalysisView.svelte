@@ -3,12 +3,25 @@
     import BackButton from "../lib/BackButton.svelte";
     import InfoTab from "../lib/InfoTab.svelte";
 
-    // (WIP) Temporarily import currentPolicy from PolicyGallery
-    // import { currentPolicy } from 'src/routes/PolicyGallery.svelte';
-    // (WIP) Staticly Referencing Analysis Data
-    import analysis from "../lib/data/analysis_results.json";
+    // // (WIP) Temporarily import currentPolicy from PolicyGallery
+    // import { currentPolicy } from '../lib/stores/currentPolicy.js';
+
+    // // currentPolicy Store Variable 
+    import analysis from "../lib/data/structured.json";
+
+    // Hardcoded data for testing
     const data = analysis[0];
     const general = data.analysis_sections;
+
+    // // Binding currentPolicy to its JSON
+    // $: matched = $currentPolicy && analysis.find(
+    //     (p) => p.document.filename === $currentPolicy.document.filename
+    // );
+    // $: general = matched?.analysis_sections;
+
+    // console.log("Current policy filename:", $currentPolicy?.document?.filename);
+    // console.log("Matched policy:", matched);
+
 
     // State Variables
     let activeTab = 'general_equity_assessment';
@@ -29,26 +42,35 @@
 
 <style>
     /* Container for the main content */
-    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1rem; font-family: system-ui, sans-serif; }
+    .container { max-width: 1080; margin: 0 auto; padding: 2rem 1rem; font-family: system-ui, sans-serif; }
+
+    /* Header and Subtitle */
+    .header { margin-top: -75px; text-align: center; }
 
     /* Tab Elements */
     .tab-bar {
         display: flex;
-        gap: 1rem;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
         margin-bottom: 2rem;
         justify-content: center;
         background: #EDEDED;
         border-radius: 10px;
-        padding: 1rem 0;
-        width: 100%;
+        padding: 1rem 2rem; /* Increased left/right padding */
+        max-width: 600px;
         box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+        overflow-x: auto;
     }
     .tab { padding: 0.5rem 1rem; border: 2px solid #ccc; border-radius: 8px; background: #5bcce8; cursor: pointer; }
     .tab.active { background: #0C395A; color: white; border-color: #0C395A; }
 
     /* Equity Tab, Cards */
-    .pill { padding: 0.4rem 0.8rem; font-weight: bold; font-size: 0.95rem; border-radius: 6px; color: #fff; margin-bottom: 0.5rem; display: inline-block; }
+
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
     .section { background-color: #eee; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; }
+    .pill { padding: 0.4rem 0.8rem; font-weight: bold; font-size: 0.95rem; border-radius: 6px; color: #fff; margin-bottom: 0.5rem; display: inline-block; }
     .title { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
     .columns { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem; }
     /* Pos. & Neg. Sections */
@@ -66,10 +88,15 @@
   <InfoTab />
 
   <div class="container">
-    <h1>
-      <img src="public/sel-btn.png" alt="{data.document.title}" style="height: 1em; vertical-align: middle; margin-right: 0.5em;">
-      {data.document.title}
-    </h1>
+
+    <div class="header">
+      <h1>
+        <img src="public/sel-btn.png" alt="{data.document.title}" style="height: 1em; vertical-align: middle; margin-right: 0.5em;">
+        {data.document.title}
+        <!-- <img src="public/sel-btn.png" alt="{selectedPolicy?.document?.title}" style="height: 1em; vertical-align: middle; margin-right: 0.5em;">
+        {selectedPolicy?.document?.title} -->
+      </h1>
+    </div>
 
 
     <!-- Tab Bar -->
@@ -87,35 +114,82 @@
         {/each}
     </div>
 
+    <!-- General Equity Assessment -->
     {#if activeTab === 'general_equity_assessment'}
       <p class="summary">{general[activeTab].summary}</p>
-      {#each equitySections as s}
-        <div class="section">
-          <div class="title">
-            <span class="pill" style="background-color: {s.color}">{s.label}</span>
-          </div>
-
-          <div class="columns">
-            <div class="box">
-              <strong><img src="public/green-dot.png" alt="Positive Findings" style="height: 1em; vertical-align: middle; margin-right: 0.5em;"> Positive Findings</strong>
-              <p>{general[activeTab][s.key].positive_findings}</p>
+      <div class="section-grid">
+        {#each equitySections as s}
+            <div class="section">
+            <div class="title">
+                <span class="pill" style="background-color: {s.color}">{s.label}</span>
             </div>
-            <div class="box">
-              <strong><img src="public/red-dot.png" alt="Areas of Concern" style="height: 1em; vertical-align: middle; margin-right: 0.5em;"> Areas of Concern</strong>
-              <p>{general[activeTab][s.key].concerns}</p>
-            </div>
-          </div>
 
-          <div class="conclusion">
-            <strong>Conclusion:</strong> {general[activeTab][s.key].conclusion}
-          </div>
-        </div>
-      {/each}
+            <div class="columns">
+                <div class="box">
+                <strong><img src="public/green-dot.png" alt="Positive Findings" style="height: 1em; vertical-align: middle; margin-right: 0.5em;"> Positive Findings</strong>
+                <p>{general[activeTab][s.key].positive_findings}</p>
+                </div>
+                <div class="box">
+                <strong><img src="public/red-dot.png" alt="Areas of Concern" style="height: 1em; vertical-align: middle; margin-right: 0.5em;"> Areas of Concern</strong>
+                <p>{general[activeTab][s.key].concerns}</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <strong>Conclusion:</strong> {general[activeTab][s.key].conclusion}
+            </div>
+            </div>
+        {/each}
+      </div>
+      
     {:else}
       <p class="summary">{general[activeTab]}</p>
     {/if}
 
-    <!-- Other Formats Will be Written -->
+    <!-- Vulnerable Groups Formatting -->
+    {#if activeTab === 'vulnerable_groups'}
+      <h1>This is the Vulnerable Groups Tab!</h1>
+    {/if}
+
+    <!-- Impact Severity Formatting -->
+    {#if activeTab === 'impact_severity'}
+    <p class="summary">{general.severity_impact_analysis.summary}</p>
+
+    <div class="section">
+        <div class="title">
+        <span class="pill" style="background-color: #ff7a7a">Impact Severity</span>
+        </div>
+
+        <div class="columns">
+        <div class="box">
+            <strong>
+            <img src="public/green-dot.png" alt="High Severity Impacts" style="height: 1em; vertical-align: middle; margin-right: 0.5em;" />
+            High Severity Impacts
+            </strong>
+            <p>{general.severity_impact_analysis.high_severity_impacts}</p>
+        </div>
+
+        <div class="box">
+            <strong>
+            <img src="public/red-dot.png" alt="Equity Implications of Impacts" style="height: 1em; vertical-align: middle; margin-right: 0.5em;" />
+            Equity Implications of Impacts
+            </strong>
+            <p>{general.severity_impact_analysis.equity_implications_of_impacts}</p>
+        </div>
+        </div>
+
+        <div class="conclusion">
+        <strong>Conclusion:</strong> {general.severity_impact_analysis.conclusion}
+        </div>
+    </div>
+    {/if}
+
+    <!-- Mitigation Strategies Formatting -->
+    {#if activeTab === 'mitigation_strategies'}
+      <h1>This is the Mitigation Strategies Tab!</h1>
+    {/if}
+    
 
   </div>
+
 </section>

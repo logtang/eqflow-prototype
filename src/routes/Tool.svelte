@@ -3,6 +3,7 @@
   // Importing Local Module
   import LogoBar from "../lib/LogoBar.svelte";
   import BackButton from "../lib/BackButton.svelte";
+  import ReportView from "./ReportView.svelte";
   // Policies data
   import policies from "../lib/data/test.json";
 
@@ -26,9 +27,12 @@
   .sidebar { width: 320px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px dotted #ccc; background: #fff; }
   .sidebar h2 { font-size: 16px; font-weight: 600; margin: 36px 0 12px; }
   /* (1.1) Upload Button*/
-  .upload-button { font-size: 13px; padding: 8px 12px; border-radius: 6px; cursor: pointer; border: none; background: #0F3C5F; color: #fff; }
+  .upload-button { font-size: 13px; padding: 8px 12px; border-radius: 6px; cursor: pointer; border: none; background: #0F3C5F; color: #fff; margin-bottom: -100px;}
   .upload-button:hover { background: #0d304f; }
   /* (1.2) Policy Selection */
+  .policies {
+    margin-top: 24px;
+  }
   .policies li.selected { background: #e0e7ef; color: #0F3C5F; border-radius: 8px; transition: background 0.15s; }
   .policies li.selected button { color: #0F3C5F; font-weight: 600; }
   /* (1.3) Recent Documents */
@@ -66,7 +70,6 @@
 
   <div class="screen-layout">
     
-
     <!-- (i) Sidebar Logo Overlay -->
     <div style="position:absolute;top:0;left:0;width:320px;z-index:100;">
       <LogoBar />
@@ -97,7 +100,7 @@
       </div>
 
       <!-- (1.2) Policies Section -->
-      <div class="policies" style="margin-top: -300px;">
+      <div class="policies">
         <ul style="list-style: none; padding: 0; margin: 0;">
           {#each policies as policy}
         <li class:selected={currentDoc === policy} style="margin-bottom: 6px; border: 1px solid #e5e7eb; border-radius: 8px;">
@@ -128,6 +131,7 @@
     <div class="report-panel" style="width: {chatPanel ? '640px' : 'calc(100% - 320px)'};">
         <div class="report-content">
             <h1 style="text-align: center">Report-Style View</h1>
+            <ReportView {currentDoc} />
         </div>
     </div>
 
